@@ -5,8 +5,8 @@ function checkSize() {
     }
 }
 function checkDec() {
-    for (i=0;i<textBox.textContent.length;i++){
-        if (textBox.textContent[i] == '.'){
+    for (i = 0; i < textBox.textContent.length; i++) {
+        if (textBox.textContent[i] == '.') {
             return true;
         }
     }
@@ -88,42 +88,36 @@ window.addEventListener('keydown', (e) => {
             checkSize();
             break;
         case '/':// "/"
-            if (textBox.textContent[textBox.textContent.length -1] != '+' && textBox.textContent[textBox.textContent.length -1] != '-' && textBox.textContent[textBox.textContent.length -1] != '*'
-                && textBox.textContent[textBox.textContent.length -1] != '/' && textBox.textContent[textBox.textContent.length -1] != '') {
+            if (textBox.textContent[textBox.textContent.length - 1] != '+' && textBox.textContent[textBox.textContent.length - 1] != '-' && textBox.textContent[textBox.textContent.length - 1] != '*'
+                && textBox.textContent[textBox.textContent.length - 1] != '/' && textBox.textContent[textBox.textContent.length - 1] != undefined) {
                 textBox.textContent += '/';
             }
             checkSize();
             break;
         case '*':// '*'
-            if (textBox.textContent[textBox.textContent.length -1] != '+' && textBox.textContent[textBox.textContent.length -1] != '-' && textBox.textContent[textBox.textContent.length -1] != '*'
-                && textBox.textContent[textBox.textContent.length -1] != '/' && textBox.textContent[textBox.textContent.length -1] != '') {
+            if (textBox.textContent[textBox.textContent.length - 1] != '+' && textBox.textContent[textBox.textContent.length - 1] != '-' && textBox.textContent[textBox.textContent.length - 1] != '*'
+                && textBox.textContent[textBox.textContent.length - 1] != '/' && textBox.textContent[textBox.textContent.length - 1] != undefined) {
                 textBox.textContent += '*';
             }
             checkSize();
             break;
         case '+'://'+'
-            if (textBox.textContent[textBox.textContent.length -1] != '+' && textBox.textContent[textBox.textContent.length -1] != '-' && textBox.textContent[textBox.textContent.length -1] != '*'
-                && textBox.textContent[textBox.textContent.length -1] != '/' && textBox.textContent[textBox.textContent.length -1] != '') {
+            if (textBox.textContent[textBox.textContent.length - 1] != '+' && textBox.textContent[textBox.textContent.length - 1] != '-' && textBox.textContent[textBox.textContent.length - 1] != '*'
+                && textBox.textContent[textBox.textContent.length - 1] != '/' && textBox.textContent[textBox.textContent.length - 1] != undefined) {
                 textBox.textContent += '+';
             }
             checkSize();
             break;
         case '-'://'-'
-            if (textBox.textContent[textBox.textContent.length -1] != '+' && textBox.textContent[textBox.textContent.length -1] != '-' && textBox.textContent[textBox.textContent.length -1] != '*'
-                && textBox.textContent[textBox.textContent.length -1] != '/' && textBox.textContent[textBox.textContent.length -1] != '') {
+            if (textBox.textContent[textBox.textContent.length - 1] != '+' && textBox.textContent[textBox.textContent.length - 1] != '-' && textBox.textContent[textBox.textContent.length - 1] != '*'
+                && textBox.textContent[textBox.textContent.length - 1] != '/' && textBox.textContent[textBox.textContent.length - 1] != undefined) {
                 textBox.textContent += '-'
             }
             checkSize();
             break;
         case '.'://'.'
-            if (textBox.textContent[textBox.textContent.length -1] != '+' && textBox.textContent[textBox.textContent.length -1] != '-' && textBox.textContent[textBox.textContent.length -1] != '*'
-                && textBox.textContent[textBox.textContent.length -1] != '/' && textBox.textContent[textBox.textContent.length -1] != '') {
-                    if(checkDec() == true){
-
-                    }
-                    else {
-                        textBox.textContent += '.';
-                    }
+            if (checkDec() == false) {
+                textBox.textContent += '.'
             }
             checkSize();
             break;
@@ -152,16 +146,16 @@ for (i = 0; i < allOperators.length; i++) {
     }
     else {
         opr.addEventListener('click', () => {
-            if (textBox.textContent[textBox.textContent.length -1] != '+' && textBox.textContent[textBox.textContent.length -1] != '-' && textBox.textContent[textBox.textContent.length -1] != '*'
-                && textBox.textContent[textBox.textContent.length -1] != '/' && textBox.textContent[textBox.textContent.length -1] != '') {
-                if(opr.className == '.' && checkDec() == true){
-
-                }
-                else{
-                    textBox.textContent += opr.className;
-                }
+            if (textBox.textContent[textBox.textContent.length - 1] != '+' && textBox.textContent[textBox.textContent.length - 1] != '-'
+                && textBox.textContent[textBox.textContent.length - 1] != '*' && textBox.textContent[textBox.textContent.length - 1] != '/'
+                && textBox.textContent[textBox.textContent.length - 1] != undefined && textBox.textContent[textBox.textContent.length - 1] != '.'
+                && opr.className != '.') {
+                textBox.textContent += opr.className;
             }
-            console.log(textBox.textContent[textBox.textContent.length -1])
+            if (opr.textContent == 'Dec.' && checkDec() == false) {
+                textBox.textContent += opr.className;
+            }
+
             checkSize();
         })
     }
